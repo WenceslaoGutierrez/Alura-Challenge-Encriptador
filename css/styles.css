@@ -1,5 +1,5 @@
 :root{
-    /* Colore Pallete */
+    /* Color Pallete */
 
     /* Dark Blues */
     --darkBlue100 : #609ED4;
@@ -62,18 +62,49 @@ h1{
     width: 95%;
     margin: 0 auto;
 }
+@media (min-width: 1200px) {
+   .container{
+    display: flex;
+   }
+}
+.mainContent--bottom{
+    width: 90%;
+}
+@media (min-width:1200px) {
+   .mainContent--bottom{
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 4rem;
+   }
+}
+
 .sideContent{
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 25vh;   
     margin: 2rem 0;
-    height: 80vh;
     padding: 0 1rem;
-    /* Background Image*/
-    background-image: url(/img/muñeco.svg);
-    background-repeat: no-repeat;
-    background-position: 50% 20%;
-    background-size: 60%;
     background-color: #FFFFFF;
     border-radius: 1.5rem;
+}
+.sideContent__texts{
+    text-align: center;
+}
+@media (min-width: 1200px) {
+    .sideContent{
+        display: unset;
+        height: 90vh;   
+        background-image: url(/img/muñeco.svg);
+        background-repeat: no-repeat;
+        background-position: 50% 40%;
+        background-size: 60%;
+    }
+    .sideContent__texts{
+        position: relative;
+        top: 55%;
+    }
 }
 .btn{
     flex: 0 0 50%;
@@ -142,13 +173,13 @@ h1{
 
 /* Media Queries */
 
+.flexContainer{
+    display: flex;
+    gap: 3rem;
+    justify-content: space-between;
+}
 /* Laptop/Desktops */
 @media (min-width: 1200px) {
-    .flexContainer{
-        display: flex;
-        gap: 3rem;
-        justify-content: space-between;
-    }
     .mainContent{
         display: flex;
         position: relative;
