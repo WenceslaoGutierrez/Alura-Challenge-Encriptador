@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preload" href="https://fonts.cdnfonts.com/css/museo-sans-rounded" as="font" type="font/woff2" crossorigin="anonymous">
+    <link href="https://fonts.cdnfonts.com/css/museo-sans-rounded" rel="stylesheet">
+    <link rel="preload" href="css/normalize.css" as="style">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="preload" href="css/styles.css" as="style">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Challange Encriptador</title>
+</head>
+<a href="#" ><img class="logo" src="/img/logo_alura.svg" alt="Logo Alura"></a>
+    <div class="container flexContainer">
+        <main class="mainContent">
+            <textarea class="mainContent__textInput" name="Mensaje" id="message" cols="25" rows="2" placeholder="Ingrese el texto aquí"></textarea>
+            <div class="maxWidth toBottom">
+                <p class="warning">Solo letras minúsculas y sin acentos</p>
+                <div class="flexContainer centerElements">
+                    <input type="button" class="btn btn--main" id="encrypt" value="Encriptar">
+                    <input type="button" class="btn btn--secondary" id="unencrypt" value="Desencriptar">
+                </div>
+            </div>
+        </main>
+        <aside class="sideContent">
+            <div class="toBottom centerText">
+                <h1>Ningún mensaje fue encontrado</h1>
+                <p>Ingresa el texto que deseas encriptar o desencriptar</p>
+            </div>
+        </aside>
+    </div>
+
+    <footer class="footer">
+        <p class="footer__text">Todos los derechos reservados. Copyright © 2024  Wenceslao de Jesús Gutiérrez Vite.</p>
+    </footer>
+</body>
+</html>
