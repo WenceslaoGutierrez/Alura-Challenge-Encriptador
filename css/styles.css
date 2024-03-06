@@ -172,7 +172,7 @@ h1{
     align-items: center;
     justify-content: center;
     flex-basis: calc(33% - 2rem);
-    height: 25vh;   
+    min-height: 30vh;   
     margin: 2rem 0;
     padding: 0 1rem;
     background-color: #FFFFFF;
