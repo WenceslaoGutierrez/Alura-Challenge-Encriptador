@@ -8,6 +8,11 @@ buttontest.addEventListener("click",encrypt);
 function encrypt(){
     /* Save message from ID message */
     const message=document.getElementById("message").value;
+    /* Check if the message is empty */
+    if(message.trim().length === 0){
+        console.log("message is empty");
+        return;
+    }
     /* Split string into characters */
     const splitMessage=message.split("");
     /* Variable for encrypting message */
@@ -33,20 +38,26 @@ function encrypt(){
             break;
             default:
                 encryptedMessage+=splitMessage[i];
-
         }
     }
     console.log(encryptedMessage);
+    updateMessage(encryptedMessage);
 };
 
 function messageNotFound(){
+    const screenText=document.getElementById("messageScreen");
+    document.getElementById("screen").classList.add("sideContent--image");
     const heading=document.createElement("H1");
     const suggest=document.createElement("P");
     heading.textContent="Ningún mensaje fue encontrado";
     heading.id="heading"
     suggest.textContent="Ingresa el texto que deseas encriptar o desencriptar";
     suggest.id="suggest"
-    const screen=document.getElementById("messageScreen");
-    screen.appendChild(heading);
-    screen.appendChild(suggest);
+    screenText.appendChild(heading);
+    screenText.appendChild(suggest);
+}
+function updateMessage(message){
+    document.getElementById("screen").classList.remove("sideContent--image");
+    document.getElementById("heading").textContent="";
+    document.getElementById("suggest").textContent=message;
 }

@@ -172,7 +172,7 @@ h1{
     align-items: center;
     justify-content: center;
     flex-basis: calc(33% - 2rem);
-    min-height: 30vh;   
+    min-height: 25rem;   
     margin: 2rem 0;
     padding: 0 1rem;
     background-color: #FFFFFF;
@@ -184,7 +184,9 @@ h1{
 @media (min-width: 1200px) {
     .sideContent{
         display: unset;
-        height: 90vh;   
+        height: 55rem;
+    }
+    .sideContent--image{
         background-image: url(/img/muñeco.svg);
         background-repeat: no-repeat;
         background-position: 50% 40%;
