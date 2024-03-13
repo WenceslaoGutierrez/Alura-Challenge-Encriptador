@@ -12,31 +12,21 @@ function encrypt(){
     if(checkMessage(message)) return;
     /* Split string into characters */
     const splitMessage=message.split("");
+    /* Array with chars and encryptions */
+    const encryptionsChars=[["a","ai"],["e","enter"],["i","imes"],["o","ober"],["u","ufat"]];
     /* Variable for encrypting message */
     let encryptedMessage="";
-
     /* Encryption loop */
     for(let i=0;i<splitMessage.length;i++){
-        switch(splitMessage[i]){
-            case "a":
-                encryptedMessage+="ai";    
-            break;
-            case "e":
-                encryptedMessage+="enter";    
-            break;
-            case "i":
-                encryptedMessage+="imes";    
-            break;
-            case "o":
-                encryptedMessage+="ober";    
-            break;
-            case "u":
-                encryptedMessage+="ufat";    
-            break;
-            default:
-                encryptedMessage+=splitMessage[i];
+        /* Find current character in  encryptionsChars */
+        const replacement = encryptionsChars.find(pair => pair[0] === splitMessage[i]);
+        if (replacement) { /* If it finds a replacement, adds it to the encrypted message */
+            encryptedMessage += replacement[1];
         }
-    }
+        else {
+            encryptedMessage += splitMessage[i]; /* If there was none, we add the current character */
+        };
+    };
     console.log(encryptedMessage);
     updateMessage(encryptedMessage);
 };
