@@ -5,57 +5,49 @@ messageNotFound();
 const buttontest=document.getElementById("encrypt");
 buttontest.addEventListener("click",encrypt);
 
-function encrypt(){
+function encrypt() {
     /* Save message from ID message */
-    const message=document.getElementById("message").value;
+    const message = document.getElementById("message").value;
     /* Check if the message is valid */
-    if(checkMessage(message)) return;
-    /* Split string into characters */
-    const splitMessage=message.split("");
-    /* Array with chars and encryptions */
-    const encryptionsChars=[["a","ai"],["e","enter"],["i","imes"],["o","ober"],["u","ufat"]];
-    /* Variable for encrypting message */
-    let encryptedMessage="";
-    /* Encryption loop */
-    for(let i=0;i<splitMessage.length;i++){
-        /* Find current character in  encryptionsChars */
-        const replacement = encryptionsChars.find(pair => pair[0] === splitMessage[i]);
-        if (replacement) { /* If it finds a replacement, adds it to the encrypted message */
-            encryptedMessage += replacement[1];
-        }
-        else {
-            encryptedMessage += splitMessage[i]; /* If there was none, we add the current character */
-        };
+    if (checkMessage(message)) return;
+
+    /* Object with chars and encryptions */
+    const encryptionsChars = {
+        "a": "ai",
+        "e": "enter",
+        "i": "imes",
+        "o": "ober",
+        "u": "ufat"
     };
+
+    /* Variable for encrypting message */
+    let encryptedMessage = "";
+
+    /* Encryption loop */
+    for (let char of message) {
+        /* Find current character in encryptionsChars */
+        const replacement = encryptionsChars[char];
+        /* If it finds a replacement, adds it to the encrypted message */
+        encryptedMessage += replacement ? replacement : char;
+    }
+
     console.log(encryptedMessage);
     updateMessage(encryptedMessage);
 };
-
 function checkMessage(message){
      /* Check if the message is empty */
     if(message.trim().length === 0){
         console.log("message is empty");
         return true;
     };
-    /* Regex with special characters, accents and uppercases */
-    const regex = /[\p{P}\p{M}\p{Mn}\p{Lu}]+/u;        
+    /* Regex that isn't from a-z or a number */
+    const regex = /[^a-z0-9\s]+/u;        
     /* Check if the message has special characters */
     if(regex.test(message)){
         console.log("message has special characters")
         return true;
     };
 };
-
-function notValidMessage(message){
-    /* Regex with special characters, accents and uppercases */
-    const regex = /[\p{P} \p{M} \p{Mn} \p{Lu}]+/u;
-    /* Check if the message has special characters */
-    if(regex.test(message)){
-        console.log("message has special characters")
-        return true;
-    };
-}
-
 function messageNotFound(){
     const screenText=document.getElementById("messageScreen");
     document.getElementById("screen").classList.add("sideContent--image");
