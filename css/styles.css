@@ -171,7 +171,6 @@ h1{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-basis: calc(33% - 2rem);
     min-height: 25rem;   
     margin: 2rem 0;
     padding: 0 1rem;
@@ -180,11 +179,16 @@ h1{
 }
 .sideContent__texts{
     text-align: center;
+    padding: 2rem;
+    max-width: 90%;
 }
 @media (min-width: 1200px) {
     .sideContent{
-        display: unset;
+        width: calc(33% - 2rem);
         height: 55rem;
+    }
+    .sideContent--block{
+        display: block;
     }
     .sideContent--image{
         background-image: url(/img/muñeco.svg);
@@ -194,7 +198,12 @@ h1{
     }
     .sideContent__texts{
         position: relative;
-        top: 55%;
+        top: 25%;
+    }
+    .sideContent__texts--active{
+        word-wrap: break-word;
+        top: unset;
+        text-align: justify;
     }
 }
 /* Side Content End */
