@@ -1,11 +1,20 @@
 /* Message not found */
 startingConditions();
-
-/* Identify encrypt button */
+/* Identify encrypt and decrypt button */
 const buttonEncrypt=document.getElementById("encrypt");
 const buttonDecrypt=document.getElementById("decrypt");
 buttonEncrypt.addEventListener("click",encrypt);
 buttonDecrypt.addEventListener("click",decrypt);
+/* Copy Button and container */
+const buttonContainer=document.createElement("DIV");
+buttonContainer.classList.add("bottomContentSide","buttons--side");
+buttonContainer.setAttribute("id","Copy");
+const buttonCopy=document.createElement("INPUT");
+buttonCopy.classList.add("buttons__button","buttons__button--secondary");
+buttonCopy.setAttribute("type","button");
+buttonCopy.setAttribute("value","Copiar");
+buttonCopy.addEventListener("click",copy);
+buttonContainer.appendChild(buttonCopy);
 /* Save message from ID message */
 const message = document.getElementById("message");
 /* Array with chars and encryption keys */
@@ -40,20 +49,32 @@ function decrypt(){
         decryptedMessage = decryptedMessage.replaceAll(cipher, original);
     }
     updateMessage(decryptedMessage,"valid");
+};
+function copyAdd(screenElement){
+    screenElement.appendChild(buttonContainer);
+};
+function copy(){
+    try{
+        const messageConverted=document.getElementById("suggest").innerText;
+        navigator.clipboard.writeText(messageConverted);
+    }
+    catch(error){
+        console.log(error);
+    };
 }
 function checkMessage(){
      /* Check if the message is empty */
     if(message.value.trim().length === 0){
         console.log("message is empty");
-        updateMessage(message,"empty");
+        updateMessage("","empty");
         return true;
     };
     /* Regex that isn't from a-z */
     const regex = /[^a-z\s]+/u;        
     /* Check if the message has special characters */
     if(regex.test(message.value)){
-        console.log("message has special characters")
-        updateMessage(message,"special");
+        console.log("message has special characters");
+        updateMessage("","special");
         return true;
     };
 };
@@ -63,9 +84,9 @@ function startingConditions(){
     const heading=document.createElement("H1");
     const suggest=document.createElement("P");
     heading.textContent="Ningún mensaje fue encontrado";
-    heading.id="heading"
+    heading.id="heading";
     suggest.textContent="Ingresa el texto que deseas encriptar o desencriptar";
-    suggest.id="suggest"
+    suggest.id="suggest";
     screenText.appendChild(heading);
     screenText.appendChild(suggest);
     updateMessage("","empty");
@@ -78,27 +99,42 @@ function updateMessage(message, status) {
     
     switch (status) {
         case "empty":
-            screenText.classList.remove("sideContent__texts--active");
-            screenElement.classList.remove("sideContent--block");
-            screenElement.classList.add("sideContent--image");
-            headingElement.textContent = "Ningún mensaje fue encontrado";
-            suggestElement.textContent = "Asegurate de ingresar el texto que deseas encriptar o desencriptar";
+                updateMessageImages(screenElement,screenText,"remove");
+                headingElement.textContent = "Ningún mensaje fue encontrado";
+                suggestElement.textContent = "Asegurate de ingresar el texto que deseas encriptar o desencriptar";
             break;
             case "special":
-            screenElement.classList.remove("sideContent--block");
-            screenText.classList.remove("sideContent__texts--active");
-            screenElement.classList.add("sideContent--image");
-            headingElement.textContent = "Mensaje no válido";
-            suggestElement.textContent = "Por favor asegúrate de solo utilizar letras minúsculas y sin acentos";
-            break;
-            case "valid":
-            screenElement.classList.add("sideContent--block");
-            screenText.classList.add("sideContent__texts--active");
-            screenElement.classList.remove("sideContent--image");
-            headingElement.textContent = "";
-            suggestElement.textContent = message;
-            break;
-        default:
-            break;
-    }
+                updateMessageImages(screenElement,screenText,"remove");
+                headingElement.textContent = "Mensaje no válido";
+                suggestElement.textContent = "Por favor asegúrate de solo utilizar letras minúsculas y sin acentos";
+                break;
+                case "valid":
+                updateMessageImages(screenElement,screenText,"add");
+                headingElement.textContent = "";
+                suggestElement.textContent = message;
+                copyAdd(screenElement);
+                break;
+                default:
+                    break;
+                };
+};
+function updateMessageImages(screenElement,screenText,type){
+    if(type==="remove"){
+        screenElement.classList.remove("sideContent--active");
+        screenText.classList.remove("sideContent__texts--active");
+        screenElement.classList.add("sideContent--image");
+        try {
+            const copy=document.getElementById("Copy");
+            copy.remove();
+        } catch (error) {
+            console.log(error);
+        };
+        return;
+    };
+    if (type==="add"){
+        screenElement.classList.add("sideContent--active");
+        screenText.classList.add("sideContent__texts--active");
+        screenElement.classList.remove("sideContent--image");
+        return;
+    };
 };

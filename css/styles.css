@@ -2,8 +2,6 @@
     /* Color Pallete */
 
     /* Dark Blues */
-    --darkBlue100 : #609ED4;
-    --darkBlue200 : #356EA9;
     --darkBlue300 : #0A3871;
     --darkBlue400 : #072B61;
     --darkBlue500 : #052051;
@@ -11,19 +9,11 @@
     /* Light Blues */
     --lightBlue100 : #F3F5FC;
     --lightBlue200 : #EFF1FA;
-    --lightBlue300 : #E9ECF8;
-    --lightBlue400 : #AAB2D5;
-    --lightBlue500 : #757FB2;
     
     /* Grays */
-    --gray100 : #CED4DA;
-    --gray200 : #ADB5BD;
-    --gray300 : #868E96;
     --gray400 : #495057;
     --gray500 : #343A40;
-    
-    /* Button */
-    --altButton : #D8DFE8;
+
     /* Fonts */
     --mainFont:'Museo Sans Rounded', sans-serif;
 }
@@ -110,6 +100,15 @@ h1{
     bottom: 0;
     padding-bottom: 4rem;
    }
+   .bottomContentSide{
+    position: relative;
+   }
+}
+.bottomContentSide{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 2rem;
 }
 .bottomContent__warning{
     flex: 0 0 100%;
@@ -130,7 +129,6 @@ h1{
 }
 .buttons__button{
     width: 80%;
-    gap: 2rem;
     border-radius: 2rem;
     border-style: solid;
     border-width: 1px;
@@ -143,9 +141,13 @@ h1{
         align-items: center;
         flex-direction: row;
     }
-   .buttons__button{
-       flex: 0 0 50%;
-   }
+    .buttons__button{
+        flex: 0 0 50%;
+    }
+}
+@media (min-width: 1200px) {
+    .buttons--side{
+    }
 }
 .buttons__button--main{
     background-color: var(--darkBlue300);
@@ -176,6 +178,7 @@ h1{
     padding: 0 1rem;
     background-color: #FFFFFF;
     border-radius: 1.5rem;
+    box-shadow: 0px 24px 32px -8px rgba(0,0,0,0.08);
 }
 .sideContent__texts{
     text-align: center;
@@ -185,10 +188,11 @@ h1{
 @media (min-width: 1200px) {
     .sideContent{
         width: calc(33% - 2rem);
-        height: 55rem;
+        min-height: 55rem;
     }
-    .sideContent--block{
-        display: block;
+    .sideContent--active{
+        align-items: unset;
+        justify-content: unset;
     }
     .sideContent--image{
         background-image: url(/img/muñeco.svg);
@@ -200,11 +204,12 @@ h1{
         position: relative;
         top: 25%;
     }
-    .sideContent__texts--active{
-        word-wrap: break-word;
-        top: unset;
-        text-align: justify;
-    }
+}
+.sideContent__texts--active{
+    margin-bottom: auto;
+    word-wrap: break-word;
+    top: unset;
+    text-align: justify;
 }
 /* Side Content End */
 
