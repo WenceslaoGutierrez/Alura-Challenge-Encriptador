@@ -112,7 +112,7 @@ h1{
 }
 .bottomContent__warning{
     flex: 0 0 100%;
-    background-image: url(/img/exclamation.svg);
+    background-image: url(../img/exclamation.svg);
     background-repeat: no-repeat;
     background-position: left;
     padding-left: 2.5rem;
