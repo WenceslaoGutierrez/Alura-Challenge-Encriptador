@@ -15,7 +15,7 @@
     --gray500 : #343A40;
 
     /* Fonts */
-    --mainFont:'Museo Sans Rounded', sans-serif;
+    --mainFont:"Inter", sans-serif;;
 }
 
 /* Globals */
@@ -195,7 +195,7 @@ h1{
         justify-content: unset;
     }
     .sideContent--image{
-        background-image: url(/img/muñeco.svg);
+        background-image: url(./img/muñeco.svg);
         background-repeat: no-repeat;
         background-position: 50% 40%;
         background-size: 60%;
@@ -219,8 +219,11 @@ h1{
     text-align: center;
     margin-top: 3rem;
     padding: 0.1rem;
+    display: flex;
+    justify-content: center;
 }
 .footer__text{
+    max-width: 80%;
     color: #FFFFFF;
 }
 /* Footer End */
