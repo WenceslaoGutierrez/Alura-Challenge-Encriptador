@@ -195,7 +195,7 @@ h1{
         justify-content: unset;
     }
     .sideContent--image{
-        background-image: url(./img/muñeco.svg);
+        background-image: url(../img/muñeco.svg);
         background-repeat: no-repeat;
         background-position: 50% 40%;
         background-size: 60%;
